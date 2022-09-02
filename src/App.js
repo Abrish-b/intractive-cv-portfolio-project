@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./Assets/logo-removebg-preview.png"
+import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Loginpage from "./loginpage";
+import Register from "./register";
+import Reset from "./Reset";
+import Privacypolicy from "./Privacypolicy";
+import Password from "./Password";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <div className="min-h-screen flex flex-col justify-center items-center bg-red-50">
+      <img className="max-w-sm my-4" src={logo} alt="logo"/>
+      <Routes>
+        <Route path="/" element={<Loginpage />} />
+        <Route path="/register" element={<Register />}/>
+        <Route path="/reset-pass" element={<Reset />}/>
+        <Route path="/privacypolicy" element={<Privacypolicy />}/>
+        <Route path="/password:uuid" element={<Password/>}/>
+      </Routes>
     </div>
+    </Router>
+    
   );
 }
 
