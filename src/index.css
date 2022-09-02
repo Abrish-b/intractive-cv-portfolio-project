@@ -17,3 +17,22 @@
 .login-form-button {
     width: 100%;
 }
+
+#components-layout-demo-fixed-sider .logo {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.site-layout .site-layout-background {
+    background: #fff;
+}
+
+/* .ant-layout-sider-children,
+.ant-menu {
+    background-color: #2E2D2D !important;
+} */
+
+.ant-menu-item-selected {
+    background-color: #aa8d8d !important;
+}
