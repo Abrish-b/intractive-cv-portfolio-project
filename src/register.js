@@ -1,5 +1,5 @@
 import { Button, Checkbox, Form, Input, Select } from 'antd';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 const { Option } = Select;
 
 const formItemLayout = {
@@ -37,9 +37,11 @@ const tailFormItemLayout = {
 export const Register = () => {
 
     const [form] = Form.useForm();
+    const navigate = useNavigate();
 
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
+        navigate("/cv-details")
       };
     
       const prefixSelector = (

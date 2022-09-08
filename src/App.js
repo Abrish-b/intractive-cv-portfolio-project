@@ -6,6 +6,8 @@ import Privacypolicy from "./Privacypolicy";
 import Password from "./Password";
 import Wrapper from './Wrapper';
 import Dashboard from './Dashboard';
+import Cvdetail from './Cvdetail';
+import Theme from './Theme';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="/privacypolicy" element={<Wrapper><Privacypolicy /></Wrapper>}/>
         <Route path="/password:uuid" element={<Wrapper><Password/></Wrapper>}/>
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/cv-details' element={<Wrapper><Cvdetail /></Wrapper>}/>
+        <Route path='/comp' element={<Theme />}/>
       </Routes>
       </div>
     </Router>

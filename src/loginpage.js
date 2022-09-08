@@ -1,12 +1,14 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 // import { useState } from 'react';
 function Loginpage() {
     // const [error, setError] = useState(undefined);
+    const navigate = useNavigate();
 
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
+        navigate("/dashboard")
       };
       
     // const onFinishFailed = (errorInfo) => {
