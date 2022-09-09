@@ -1,14 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import logo from "./Assets/logo-removebg-preview.png"
 import profile from './Assets/prof.jpg'
 import { DesktopOutlined, FormatPainterOutlined , DownloadOutlined, HomeOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { Layout, Menu , Button } from 'antd';
-import Dashboardwrapper from './Dashboard-components/Dashboardwrapper';
-import Theme from './Theme';
-import About from './About';
-
+import { useReactToPrint } from 'react-to-print';
+import { useRef } from 'react';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -32,6 +30,7 @@ const navItems = [{
 
 const Dashboard = () => {
     const navigate = useNavigate();
+    const ref = useRef();
     const [collap, setcollap] = useState(false);
     const [onPage , setOnPage] = useState('Home');
     const changeCont = (key) =>{
@@ -52,11 +51,12 @@ const Dashboard = () => {
                 break;
         }
     }
-    const download =  () => {
-        console.log('download pdf');
-    }
+    const download = useReactToPrint({
+        content: () => ref.current,
+      });
     const preview =  () => {
-        console.log('Preview pdf');
+        // console.log('Preview pdf');
+        navigate('/preview');
     }
   return (
     <div>
@@ -103,7 +103,7 @@ const Dashboard = () => {
                     </Button>
                     <Button type="primary" shape="round" icon={<DownloadOutlined />} onClick={download}>
                         Download PDF
-                    </Button> </div>: ''}
+                    </Button> </div>: <h1 className='mr-auto'>Interactive CV</h1>}
                     
                 </div>
             </Header>
@@ -111,13 +111,15 @@ const Dashboard = () => {
                     style={{
                     margin: '24px 16px 0',
                     overflow: 'initial',
-                    }}>
+                    }} ref={ref}>
 
-                    <Routes element={<Dashboard />}>
+                    <Outlet />
+
+                    {/* <Routes element={<Dashboard />}>
                         <Route path="/" element={<Dashboardwrapper />} />
                         <Route path="/themes" element={<Theme />} />
                         <Route path="/about" element={<About />} />
-                    </Routes> 
+                    </Routes>  */}
                        
                 </Content>
             <Footer

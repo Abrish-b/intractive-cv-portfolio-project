@@ -7,7 +7,7 @@ const Achievements = () => {
             company : "ALX",
             location : "Addis Ababa, Ethiopia",
             discription: "A video call and texting App demonstration and implementation made as a portfolio website for ALX SE programme",
-            link : 'https://videomessengerapp.heroku.app',
+            link : 'https://videomessengerapp.herokuapp.com',
             start : 'May 2022',
             end : 'Jun 2022'
         },

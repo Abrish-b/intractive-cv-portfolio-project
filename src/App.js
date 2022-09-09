@@ -8,7 +8,8 @@ import Wrapper from './Wrapper';
 import Dashboard from './Dashboard';
 import Cvdetail from './Cvdetail';
 import Theme from './Theme';
-
+import About from './About';
+import Dashboardwrapper from './Dashboard-components/Dashboardwrapper';
 
 function App() {
   return (
@@ -20,9 +21,14 @@ function App() {
         <Route path="/reset-pass" element={<Wrapper><Reset /></Wrapper>}/>
         <Route path="/privacypolicy" element={<Wrapper><Privacypolicy /></Wrapper>}/>
         <Route path="/password:uuid" element={<Wrapper><Password/></Wrapper>}/>
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/dashboard' element={<Dashboard />} >
+                        <Route path="" element={<Dashboardwrapper />} />
+                        <Route path="themes" element={<Theme />} />
+                        <Route path="about" element={<About />} />
+        </Route>
         <Route path='/cv-details' element={<Wrapper><Cvdetail /></Wrapper>}/>
         <Route path='/comp' element={<Theme />}/>
+        <Route path='/preview' element={<Dashboardwrapper />} />
       </Routes>
       </div>
     </Router>

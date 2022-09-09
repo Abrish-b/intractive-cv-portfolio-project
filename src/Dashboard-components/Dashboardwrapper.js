@@ -7,14 +7,16 @@ import Education from './Education';
 import Language from './Language';
 import Achievements from './Achievements';
 import Certficate from './Certficate';
+import { forwardRef } from 'react';
 
-const Dashboardwrapper = () => {
+const Dashboardwrapper = (props, ref) => {
     const gridStyle = {
         width: '100%',
         textAlign: 'left',
       };
   return (
     <div
+    ref={ref}
     className="site-layout-background"
     style={{
         padding: 24,
@@ -49,4 +51,4 @@ const Dashboardwrapper = () => {
   )
 }
 
-export default Dashboardwrapper
+export default forwardRef(Dashboardwrapper);
