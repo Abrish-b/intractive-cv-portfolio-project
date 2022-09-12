@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Card,  Col, Row  } from 'antd';
 import theme1 from './Assets/theme1.png'
@@ -8,14 +9,16 @@ import theme5 from './Assets/theme5.jpg'
 import theme6 from './Assets/theme6.jpeg'
 import theme7 from './Assets/theme7.jpg'
 import theme8 from './Assets/theme8.jpg'
+import useDevice from './utility';
 const { Meta } = Card;
 
 const Theme = () => {
-  
+    const device = useDevice();
+    const styleFun = useMemo(()=> device.isDesktop !== true ? device.isMobile === true ? 12 : 8 : 6 ,[device])
   return (
     <div className="site-card-wrapper">
       <Row gutter={[16, 16]}>
-       <Col span={window.inner< 700 ? 8 : 6}>
+       <Col span={styleFun}>
        <Card
         cover={
           <img
@@ -36,7 +39,7 @@ const Theme = () => {
         />
      </Card>
        </Col>
-       <Col span={6}>
+       <Col span={styleFun}>
       <Card
         cover={
           <img
@@ -58,7 +61,7 @@ const Theme = () => {
      </Card>
      </Col>
 
-     <Col span={6}>
+     <Col span={styleFun}>
       <Card
         cover={
           <img
@@ -79,7 +82,7 @@ const Theme = () => {
         />
     </Card>
     </Col>
-    <Col span={6}>
+    <Col span={styleFun}>
     <Card
         cover={
           <img
@@ -100,7 +103,7 @@ const Theme = () => {
         />
      </Card>
      </Col>
-     <Col span={6}>
+     <Col span={styleFun}>
       <Card
         cover={
           <img
@@ -121,7 +124,7 @@ const Theme = () => {
         />
      </Card>
      </Col>
-     <Col span={6}>
+     <Col span={styleFun}>
       <Card
         cover={
           <img
@@ -142,7 +145,7 @@ const Theme = () => {
         />
     </Card>
     </Col>
-    <Col span={6}>
+    <Col span={styleFun}>
     <Card
         cover={
           <img
@@ -163,7 +166,7 @@ const Theme = () => {
         />
      </Card>
      </Col>
-     <Col span={6}>
+     <Col span={styleFun}>
       <Card
         cover={
           <img

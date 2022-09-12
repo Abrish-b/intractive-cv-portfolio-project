@@ -10,8 +10,17 @@ import Cvdetail from './Cvdetail';
 import Theme from './Theme';
 import About from './About';
 import Dashboardwrapper from './Dashboard-components/Dashboardwrapper';
+import ModalForObj from './Modals/ModalForObj';
 
 function App() {
+  const val = {
+    name : "Name of User",
+    position : "Job/Position",
+    description : "Discription Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut labore laboriosam velit, libero voluptates facilis autem! Pariatur placeat, eligendi dolore iure officiis quos, exercitationem accusantium aspernatur reprehenderit possimus, sed culpa?",
+    email : 'example@email.com',
+    phone : 'Phone Number',
+    linkedin : 'LinkedIn'
+};
   return (
     <Router>
       <div className='min-h-screen bg-red-50'>
@@ -27,7 +36,7 @@ function App() {
                         <Route path="about" element={<About />} />
         </Route>
         <Route path='/cv-details' element={<Wrapper><Cvdetail /></Wrapper>}/>
-        <Route path='/comp' element={<Theme />}/>
+        <Route path='/comp' element={<ModalForObj content={val} />}/>
         <Route path='/preview' element={<Dashboardwrapper />} />
       </Routes>
       </div>

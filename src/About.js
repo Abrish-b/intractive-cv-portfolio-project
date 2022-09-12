@@ -14,6 +14,10 @@ const About = () => {
       title: 'Github',
       dataIndex: 'github',
     },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+    },
   ];
 
   const data = [
@@ -21,25 +25,29 @@ const About = () => {
       key: '1',
       name: 'Abrham Bunaro',
       role: 'Front-end Developer',
-      github: 'https://github.com/Abrish-b',
+      github: <a href='https://github.com/Abrish-b' target='blank'>Click here!</a>,
+      email : 'abrishbunaro@gmail.com'
     },
     {
       key: '2',
       name: 'kaleb Abiy',
       role: 'Back-end Developer',
-      github: 'https://github.com/Abrish-b',
+      github: <a href='https://github.com/KALEB-ABIY' target='blank'>Click here!</a>,
+      email : 'Kalebabiy2012@gmail.com'
     },
     {
       key: '3',
       name: 'Melat',
       role: 'Back-end Developer',
-      github: 'https://github.com/Abrish-b',
+      github: <a href='https://github.com/melatsam' target='blank'>Click here!</a>,
+      email : 'melatsam555@gmail.com'
     },
     {
       key: '4',
       name: 'Abinet',
       role: 'Back-end Developer',
-      github: 'https://github.com/Abrish-b',
+      github: <a href='https://github.com/abinet508' target='blank' >Click here!</a>,
+      email : 'abinatmail@gmail.com'
     },
   ];
 
