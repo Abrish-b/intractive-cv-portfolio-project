@@ -1,20 +1,27 @@
 import profile from '../Assets/prof.jpg'
 import { MailOutlined,PhoneOutlined, LinkedinOutlined } from '@ant-design/icons'
-import ModalForObj from '../Modals/ModalForObj'
+import ModalSummary from '../Modals/ModalSummary'
+import { useState, useEffect } from 'react'
 
-const Summary = ({edit=false}) => {
+const Summary = ({edit=false, onSubmit , onCancel}) => {
+  const [open, setOpen] = useState(edit);
+  
+  useEffect(() => {
+      setOpen(edit)
+  }, [edit])
 
-  const basicInfo = {
+  const [basicInfo, setBasicInfo] = useState({
       name : "Name of User",
       position : "Job/Position",
       description : "Discription Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut labore laboriosam velit, libero voluptates facilis autem! Pariatur placeat, eligendi dolore iure officiis quos, exercitationem accusantium aspernatur reprehenderit possimus, sed culpa?",
       email : 'example@email.com',
       phone : 'Phone Number',
       linkedin : 'LinkedIn'
-  }
+  })
+
   return (
     <>
-      {edit ? <ModalForObj content={basicInfo} /> : <div className='flex items-center p-4'>
+      <div className='flex items-center p-4'>
           <div className='flex-none w-44'>
           <img className='w-40 h-40 rounded-full object-cover border-8 border-gray-200 border-solid' src={profile} alt='profile pic'/>
           </div>
@@ -29,7 +36,8 @@ const Summary = ({edit=false}) => {
               <div className='flex flex-row items-center gap-x-2'><LinkedinOutlined /> <div>{basicInfo.linkedin}</div></div>
               </div>
           </div>
-      </div>}
+      </div>
+      {open ? <ModalSummary content={basicInfo} open={setOpen} onSubmit={onSubmit} onCancel={onCancel} data={setBasicInfo}/> : ''}
     </>
     
   )

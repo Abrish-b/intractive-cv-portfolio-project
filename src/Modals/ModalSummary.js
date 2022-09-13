@@ -1,21 +1,26 @@
 import { Modal, Form, Input } from 'antd';
 import { useState } from 'react';
 
-const ModalForObj = ({content}) => {
+const ModalSummary = ({content, open , onSubmit, onCancel, data}) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [submitForm] = Form.useForm();
   
   const handleOk = () => {
     submitForm.submit();
     setIsModalOpen(false);
+    open(false)
+    onSubmit("summary")
   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
+    open(false)
+    onCancel("summary")
   };
 
   const onFinish = (values) => {
     console.log('Success:', values);
+    data(values)
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -24,7 +29,7 @@ const ModalForObj = ({content}) => {
 
   return (
     <>
-        <Modal title="Basic Modal" visible={isModalOpen} onOk={handleOk} onCancel={handleCancel} closable={true}>
+        <Modal title="Summary Edit" visible={isModalOpen} onOk={handleOk} onCancel={handleCancel} closable={true}>
             <Form
                 name="basic"
                 labelCol={{ span: 8 }}
@@ -82,4 +87,4 @@ const ModalForObj = ({content}) => {
   )
 }
 
-export default ModalForObj
+export default ModalSummary
