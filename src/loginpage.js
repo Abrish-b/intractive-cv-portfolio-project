@@ -1,24 +1,46 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd'
 import {NavLink, useNavigate} from 'react-router-dom'
-// import { useState } from 'react';
+import { useState } from 'react';
 function Loginpage() {
-    // const [error, setError] = useState(undefined);
+    const [error, setError] = useState(undefined);
     const navigate = useNavigate();
 
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
+      //   const requestOptions = {
+      //     method: 'POST',
+      //     headers: { 
+      //       "access-control-allow-origin" : "*",
+      //       'Content-Type': 'application/json' },
+      //     body: JSON.stringify({
+      //       username : "TestAcc",
+      //       password : "halo1234"
+      //   })
+      // };
+      // fetch('https://kaleb.pythonanywhere.com/api/login', requestOptions)
+      // .then(response => response.json())
+      // .then(data =>{
+      //   if (data.message === "user logged in"){
+      //     navigate(`/dashboard:${data.username}`)
+      //   }
+      //   else if (data.message === "Incorrect Login credentials"){
+      //     setError("Incorrect Login credentials");
+      //   }
+        
+      // });
+
         navigate("/dashboard")
       };
       
-    // const onFinishFailed = (errorInfo) => {
-    //     console.log('Failed:', errorInfo);
-    //     setError("Oops error! please try again!")
-    // };  
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+        setError("Oops error! please try again!")
+    };  
 
   return (
     <div>
-        {/* <div className='text-center text-red-500 py-3'>{ error }</div> */}
+        {error && <div className='text-center text-red-500 py-3'>{ error }</div>}
         <Form
       name="normal_login"
       className="max-w-xs login-form"
@@ -26,17 +48,19 @@ function Loginpage() {
         remember: true,
       }}
       onFinish={onFinish}
+      onFinishFailed={onFinishFailed}
     >
       <Form.Item
-        name="username"
+        name="email"
         rules={[
           {
             required: true,
-            message: 'Please input your Username!',
+            type: 'username',
+            message: 'Please input your email!',
           },
         ]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="username" />
       </Form.Item>
       <Form.Item
         name="password"
